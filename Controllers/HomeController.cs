@@ -1,20 +1,25 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EasyCheck.Models;
+using EasyCheck.Services;
 
 namespace EasyCheck.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly StudentService _studentService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, StudentService studentService)
     {
         _logger = logger;
+        _studentService = studentService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
+        var students = await _studentService.GetStudentsAsync();
+        Console.WriteLine(students.Count());
         return View();
     }
 

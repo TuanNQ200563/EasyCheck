@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Quản lý học sinh";
+}
+
+@model IEnumerable<Student>
+
+<div class="row">
+    <div class="col mb-4 order-0">
+        <div class="card">
+            <h5 class="card-header">Danh sách học sinh : Lớp 1A1</h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ tên</th>
+                            <th>Mã học sinh</th>
+                            <th>Chuyên cần</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach(var student in Model)
+                            {
+                                <tr>
+                                    <td>@student.Id</td>
+                                    <td>@student.FullName</td>
+                                    <td>@student.Code</td>
+                                    <td>10/10</td>
+                                    <td>
+                                        <a class="btn btn-sm rounded-pill btn-icon btn-primary" asp-controller="Students" asp-action="Detail" asp-route-code="@student.Code" role="button">
+                                            <i class='tf-icons bx bxs-info-circle'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">Không có học sinh trong cơ sở dữ liệu</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

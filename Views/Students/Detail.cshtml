@@ -1,0 +1,133 @@
+@{
+    ViewData["Title"] = "Thông tin học sinh";
+}
+
+@model Student
+
+<div class="row">
+    <div class="col-lg-7 mb-4 order-0">
+        <div class="card pb-2">
+            <div class="d-flex align-items-end row">
+                <div class="col-sm-6">
+                    <div class="card-body">
+                        <h5 class="text-primary">Họ tên : @Model.FullName</h5>
+                        <div class="mb-2">Mã học sinh : @Model.Code</div>
+                        @if(Model.SchoolClass != null)
+                        {
+                            <div class="mb-2">Lớp : @Model.SchoolClass.ClassName</div>
+                        }
+                        else
+                        {
+                            <div class="mb-2">Lớp : Chưa có</div>
+                        }
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card-body">
+                        <div class="mb-2">Ngày sinh : @Model.Dob.ToString("dd/MM/yyyy") </div>
+                        <div class="mb-2">SĐT Phụ huynh : @Model.ParentPhoneNumber</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5 col-md-4 order-1">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 col-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="~/img/icons/unicons/calender.svg" alt="today" class="rounded" />
+                            </div>
+                        </div>
+                        <span class="fw-medium d-block mb-1">Đi học</span>
+                        <h5 class="card-title mb-2">10</h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="~/img/icons/unicons/calender.svg" alt="today" class="rounded" />
+                            </div>
+                        </div>
+                        <span class="fw-medium d-block mb-1">Đi muộn</span>
+                        <h5 class="card-title mb-2">0</h5>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="~/img/icons/unicons/user-times.svg" alt="absent-students" class="rounded" />
+                            </div>
+                        </div>
+                        <span class="fw-medium d-block mb-1">Vắng</span>
+                        <h5 class="card-title mb-2 text-danger">0</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col mb-4 order-0">
+        <div class="card">
+            <h5 class="card-header ">
+                <i class='bx bx-history mx-1'></i>
+                <b>Lịch sử điểm danh</b>
+            </h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Buổi học</th>
+                            <th>Trạng thái</th>
+                            <th>Giờ vào</th>
+                            <th>Giờ ra</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td>20/06/2024 - Ca sáng</td>
+                            <td>
+                                <span class="mx-3 badge rounded-pill bg-success">P</span>
+                            </td>
+                            <td>20/06/2024 06:45:13</td>
+                            <td>20/06/2024 11:48:21</td>
+                            <td>
+                                <button class="mx-3 btn btn-sm rounded-pill btn-icon btn-primary" role="button">
+                                    <i class='tf-icons bx bxs-edit'></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>19/06/2024 - Ca sáng</td>
+                            <td>
+                                <span class="mx-3 badge rounded-pill bg-success">P</span>
+                            </td>
+                            <td>19/06/2024 06:55:11</td>
+                            <td>19/06/2024 11:50:02</td>
+                            <td>
+                                <button class="mx-3 btn btn-sm rounded-pill btn-icon btn-primary" role="button">
+                                    <i class='tf-icons bx bxs-edit'></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

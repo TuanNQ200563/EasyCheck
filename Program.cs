@@ -1,4 +1,15 @@
+using System.Data;
+using EasyCheck.Contexts;
+using EasyCheck.Services;
+using MySql.Data.MySqlClient;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<AttendanceService>();
+
+builder.Services.AddTransient<IDbConnection>((sp) => new MySqlConnection(builder.Configuration.GetConnectionString("MySqlConnection")));
+builder.Services.AddTransient<StudentService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

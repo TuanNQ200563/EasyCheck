@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "Điểm danh";
+}
+
+@model IEnumerable<Attendance>
+
+<div class="row">
+    <div class="col-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="~/img/icons/unicons/book.svg" alt="today" class="rounded" />
+                    </div>
+                </div>
+                <span class="d-block mb-1">Lớp chủ nhiệm</span>
+                <h3 class="card-title text-nowrap mb-2 mr-1">5A1</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="~/img/icons/unicons/user-check.svg" alt="today" class="rounded" />
+                    </div>
+                </div>
+                <span class="d-block mb-1">Sĩ số hiện tại</span>
+                <h3 class="card-title text-success text-nowrap mb-2">2/3</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                        <img src="~/img/icons/unicons/user-times.svg" alt="today" class="rounded" />
+                    </div>
+                </div>
+                <span class="d-block mb-1">Vắng</span>
+                <h3 class="card-title text-nowrap mb-2 text-danger">1</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col mb-4 order-0">
+        <div class="card">
+            <h5 class="card-header">
+                <b>
+                    Điểm danh buổi học 20/06/2024 - Ca sáng
+                </b>
+                <span class="badge bg-primary">Tiết 1</span>
+            </h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ tên</th>
+                            <th>Trạng thái</th>
+                            <th>Giờ vào</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var attendance in Model)
+                            {
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        @if (attendance.Student != null)
+                                        {
+                                            @attendance.Student.FullName
+                                        }
+                                    </td>
+                                    <td>
+                                        <span class="mx-3 badge rounded-pill bg-success">P</span>
+                                    </td>
+                                    <td>
+                                        @attendance.CheckInTime
+                                    </td>
+                                    <td>
+                                        <a class="mx-3 btn btn-sm rounded-pill btn-icon btn-primary" asp-controller="Students"
+                                            asp-action="Detail" role="button">
+                                            <i class='tf-icons bx bxs-info-circle'></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3">Không có học sinh trong cơ sở dữ liệu</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

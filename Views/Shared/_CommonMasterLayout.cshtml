@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light-style layout-menu-fixed" data-theme="theme-default" data-framework="aspnetcore-mvc"
+    data-template='vertical-menu-aspnet-core-mvc-template-free'>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <!-- Core Styles -->
+    @await Html.PartialAsync("Sections/_Styles")
+    <!--/ Core Styles -->
+
+    <!-- Vendor Styles -->
+    @RenderSection("VendorStyles", required: false)
+    <!--/ Vendor Styles -->
+
+    <!-- Page Styles -->
+    @RenderSection("PageStyles", required: false)
+    <!--/ Page Styles -->
+
+</head>
+
+<body>
+    <!-- Layout Content -->
+    @RenderBody()
+    <!--/ Layout Content -->
+
+    <!-- Core Scripts -->
+    @await Html.PartialAsync("Sections/_Scripts")
+    <!--/ Core Scripts -->
+
+    <!-- Vendor Scripts -->
+    @RenderSection("VendorScripts", required: false)
+    <!--/ Vendor Scripts -->
+
+    <!-- Main JS-->
+    <!--/ Main JS-->
+
+    <!-- Page Scripts-->
+    @RenderSection("PageScripts", required: false)
+    <!--/ Page Scripts-->
+
+
+</body>
+
+</html>

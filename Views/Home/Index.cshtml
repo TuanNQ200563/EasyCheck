@@ -1,8 +1,107 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Điểm danh";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model Teacher
+
+<div class="row">
+    <div class="col-lg-8 mb-4 order-0">
+        <div class="card">
+            <div class="d-flex align-items-end row">
+                <div class="col-sm-7">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Xin chào, giáo viên @Model.FullName !</h5>
+                        <p class="mb-4">Mã giáo viên : @Model.Code</p>
+                    </div>
+                </div>
+                <div class="col-sm-5 text-center text-sm-left">
+                    <div class="card-body pb-0 px-0 px-md-2">
+                        <img src="~/img/illustrations/teacher-whiteboard.png" height="130" alt="View Badge User"
+                            data-app-dark-img="illustrations/teacher-whiteboard.png"
+                            data-app-light-img="illustrations/teacher-whiteboard.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 order-1">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="~/img/icons/unicons/calender.svg" alt="today" class="rounded" />
+                            </div>
+                        </div>
+                        <span class="fw-medium d-block mb-1">Lớp chủ nhiệm</span>
+                        @if (Model.SchoolClass != null)
+                        {
+                            <h5 class="card-title mb-2">@Model.SchoolClass.ClassName</h5>
+                        }
+                        else
+                        {
+                            <h5 class="card-title mb-2">Chưa có</h5>
+                        }   
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
+                                <img src="~/img/icons/unicons/user-times.svg" alt="absent-students" class="rounded" />
+                            </div>
+                        </div>
+                        <span class="fw-medium d-block mb-1">Hiện tại vắng</span>
+                        <h5 class="card-title mb-2 text-danger">0</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col mb-4 order-0">
+        <div class="card">
+            <h5 class="card-header text-danger">
+                <b>
+                Danh sách vắng buổi học 20/06/2024 - Ca sáng
+                </b>
+                <span class="badge bg-primary">Tiết 1</span>
+            </h5>
+            <div class="table-responsive text-nowrap">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ tên</th>
+                            <th>Trạng thái</th>
+                            <th>SĐT Phụ huynh</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        <tr>
+                            <td>1</td>
+                            <td>Nguyễn Văn B</td>
+                            <td>
+                                <span class="mx-3 badge rounded-pill bg-danger">UA</span>
+                            </td>
+                            <td>0948845856</td>
+                            <td>
+                                <a class="mx-3 btn btn-sm rounded-pill btn-icon btn-primary" asp-controller="Students" asp-action="Detail" role="button">
+                                    <i class='tf-icons bx bxs-info-circle'></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
 </div>
