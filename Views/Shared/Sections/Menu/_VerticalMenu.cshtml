@@ -28,16 +28,16 @@
                 <div>Trang chủ</div>
             </a>
         </li>
-        @* <li class='menu-item@(currentPage == "/Attendance" ? " active" : "")'>
-            <a asp-controller="Attendance" asp-action="Index" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar-check"></i>
-                <div>Điểm danh hôm nay</div>
-            </a>
-        </li> *@
-        <li class='menu-item@(currentPage.StartsWith("/Students") ? " active" : "")'>
+        <li class='menu-item@(currentPage.StartsWith("/Student") ? " active" : "")'>
             <a asp-controller="Student" asp-action="Index" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div>Quản lý học sinh</div>
+            </a>
+        </li>
+        <li class='menu-item@(currentPage.StartsWith("/Test") ? " active" : "")'>
+            <a asp-controller="Test" asp-action="Index" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div>Test</div>
             </a>
         </li>
     </ul>

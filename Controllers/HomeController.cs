@@ -8,18 +8,14 @@ namespace EasyCheck.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly StudentService _studentService;
 
-    public HomeController(ILogger<HomeController> logger, StudentService studentService)
+    public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-        _studentService = studentService;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var students = await _studentService.GetStudentsAsync();
-        Console.WriteLine(students.Count());
         return View();
     }
 

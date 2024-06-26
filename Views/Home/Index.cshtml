@@ -2,16 +2,14 @@
     ViewData["Title"] = "Điểm danh";
 }
 
-@model Teacher
-
 <div class="row">
     <div class="col-lg-8 mb-4 order-0">
         <div class="card">
             <div class="d-flex align-items-end row">
                 <div class="col-sm-7">
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Xin chào, giáo viên @Model.FullName !</h5>
-                        <p class="mb-4">Mã giáo viên : @Model.Code</p>
+                        <h5 class="card-title text-primary">Xin chào, giáo viên !</h5>
+                        <p class="mb-4">Mã giáo viên :</p>
                     </div>
                 </div>
                 <div class="col-sm-5 text-center text-sm-left">
@@ -36,14 +34,7 @@
                             </div>
                         </div>
                         <span class="fw-medium d-block mb-1">Lớp chủ nhiệm</span>
-                        @if (Model.SchoolClass != null)
-                        {
-                            <h5 class="card-title mb-2">@Model.SchoolClass.ClassName</h5>
-                        }
-                        else
-                        {
-                            <h5 class="card-title mb-2">Chưa có</h5>
-                        }   
+                        <h5 class="card-title mb-2">Chưa có</h5>
                     </div>
                 </div>
             </div>

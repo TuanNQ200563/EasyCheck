@@ -4,6 +4,7 @@ namespace EasyCheck.Models
     {
         public int Id { get; set; }
         public required string FullName { get; set; }
-        public required string  StudentCode { get; set; }
+        public required string  TeacherCode { get; set; }
+        public required SchoolClass SchoolClass { get; set; }
     }
 }

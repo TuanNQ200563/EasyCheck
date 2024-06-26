@@ -2,8 +2,6 @@
     ViewData["Title"] = "Điểm danh";
 }
 
-@model IEnumerable<Attendance>
-
 <div class="row">
     <div class="col-4 mb-4">
         <div class="card">
@@ -67,39 +65,10 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @if (Model != null && Model.Any())
-                        {
-                            foreach (var attendance in Model)
-                            {
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        @if (attendance.Student != null)
-                                        {
-                                            @attendance.Student.FullName
-                                        }
-                                    </td>
-                                    <td>
-                                        <span class="mx-3 badge rounded-pill bg-success">P</span>
-                                    </td>
-                                    <td>
-                                        @attendance.CheckInTime
-                                    </td>
-                                    <td>
-                                        <a class="mx-3 btn btn-sm rounded-pill btn-icon btn-primary" asp-controller="Students"
-                                            asp-action="Detail" role="button">
-                                            <i class='tf-icons bx bxs-info-circle'></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr>
-                                <td colspan="3">Không có học sinh trong cơ sở dữ liệu</td>
-                            </tr>
-                        }
+                        <tr>
+                            <td colspan="3">Không có học sinh trong cơ sở dữ liệu</td>
+                        </tr>
+                
                     </tbody>
                 </table>
             </div>

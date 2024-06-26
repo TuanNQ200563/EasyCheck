@@ -2,7 +2,6 @@
     ViewData["Title"] = "Thông tin học sinh";
 }
 
-@model Student
 
 <div class="row">
     <div class="col-lg-7 mb-4 order-0">
@@ -10,22 +9,15 @@
             <div class="d-flex align-items-end row">
                 <div class="col-sm-6">
                     <div class="card-body">
-                        <h5 class="text-primary">Họ tên : @Model.FullName</h5>
-                        <div class="mb-2">Mã học sinh : @Model.Code</div>
-                        @if(Model.SchoolClass != null)
-                        {
-                            <div class="mb-2">Lớp : @Model.SchoolClass.ClassName</div>
-                        }
-                        else
-                        {
-                            <div class="mb-2">Lớp : Chưa có</div>
-                        }
+                        <h5 class="text-primary">Họ tên : </h5>
+                        <div class="mb-2">Mã học sinh :</div>
+                        <div class="mb-2">Lớp : Chưa có</div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="card-body">
-                        <div class="mb-2">Ngày sinh : @Model.Dob.ToString("dd/MM/yyyy") </div>
-                        <div class="mb-2">SĐT Phụ huynh : @Model.ParentPhoneNumber</div>
+                        <div class="mb-2">Ngày sinh :  </div>
+                        <div class="mb-2">SĐT Phụ huynh :</div>
                     </div>
                 </div>
             </div>

@@ -2,29 +2,35 @@ using System.Data;
 using EasyCheck.Models;
 using Dapper;
 
-namespace EasyCheck.Services
+namespace EasyCheck.Services;
+public class StudentService
 {
-    public class StudentService
+    private readonly IDbConnection _dbConnection;
+
+    public StudentService(IDbConnection dbConnection)
     {
-        private readonly IDbConnection _dbConnection;
+        _dbConnection = dbConnection;
+    }
 
-        public StudentService(IDbConnection dbConnection)
-        {
-            _dbConnection = dbConnection;
-        }
+    public async Task<List<Student>> GetStudentsByClassIdAsync(int classId)
+    {
+        var sql = @"
+            SELECT *
+            FROM students
+            WHERE SchoolClassId = @ClassId
+        ";
+        var students = await _dbConnection.QueryAsync<Student>(sql, new { ClassId = classId });
+        return students.AsList();
+    }
 
-        public async Task<IEnumerable<Student>> GetStudentsAsync()
-        {
-            var sql = @"
-                SELECT
-                    id AS Id,
-                    full_name AS FullName,
-                    dob AS DateOfBirth,
-                    student_code AS StudentCode,
-                    parent_contact AS ParentContact,
-                    class_id AS ClassId
-                FROM students";
-            return await _dbConnection.QueryAsync<Student>(sql);
-        }
+    public async Task<Student> GetStudentByStudentCodeAsync(string studentCode)
+    {
+        var sql = @"
+            SELECT * 
+            FROM students
+            WHERE StudentCode = @StudentCode
+        ";
+        var student = await _dbConnection.QueryAsync<Student>(sql, new { StudentCode = studentCode });
+        return student.FirstOrDefault();
     }
 }

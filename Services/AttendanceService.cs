@@ -18,6 +18,14 @@ namespace EasyCheck.Services
 
         public async Task<List<AttendanceRecord>> GetAsync() => await _attendanceCollection.Find(_ => true).ToListAsync();
         public async Task<AttendanceRecord?> GetAsync(string id) => await _attendanceCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-    
+        public async Task<List<AttendanceRecord>> GetAttendanceHistoryByStudentCode(string studentCode)
+        {
+            var filter = Builders<AttendanceRecord>.Filter.Eq(ar => ar.StudentCode, studentCode);
+            var sort = Builders<AttendanceRecord>.Sort.Descending(ar => ar.CheckInTime);
+            var attendanceHistory = await _attendanceCollection.Find(filter).Sort(sort).ToListAsync();
+            
+            return attendanceHistory;
+        }
+
     }
 }

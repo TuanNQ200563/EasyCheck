@@ -1,0 +1,66 @@
+@{
+    Layout = "_BlankLayout";
+    ViewData["Title"] = "Đăng nhập";
+}
+
+@section PageStyles {
+    <link rel="stylesheet" href="~/vendor/css/pages/page-auth.css">
+}
+
+@* ************** Content ************** *@
+
+<div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <!-- Register -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center">
+                        <a href="/" class="app-brand-link gap-2">
+                            <span class="app-brand-logo demo">EZ</span>
+                            <span class="app-brand-text demo text-body fw-bold">@TempData.Peek("appName")</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-2">Giáo viên đăng nhập</h4>
+                    <p class="mb-4">Điền mã giáo viên và mật khẩu để đăng nhập</p>
+
+                    <form id="formAuthentication" class="mb-3" action="~/" method="POST">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Mã Giáo Viên</label>
+                            <input type="text" class="form-control" id="email" name="email-username"
+                                placeholder="GVxxxxxxxx" autofocus>
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Mật khẩu</label>
+                                <a href="/Auth/ForgotPasswordBasic">
+                                    <small>Quên mật khẩu?</small>
+                                </a>
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input type="password" id="password" class="form-control" name="password"
+                                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                    aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Đăng nhập</button>
+                        </div>
+                    </form>
+
+                    <p class="text-center">
+                        <span>Bạn là phụ huynh?</span>
+                        <a href="/Auth/RegisterBasic">
+                            <span>Đăng nhập cho phụ huynh</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
