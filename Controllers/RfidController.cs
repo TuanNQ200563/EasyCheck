@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using EasyCheck.Services;
 
 public class RfidController : Controller
 {
@@ -18,9 +19,17 @@ public class RfidController : Controller
     [HttpPost]
     public IActionResult StartListening(string portName)
     {
-        _rfidReaderService.StartListening(portName);
-        ViewBag.Message = "Started listening on port " + portName;
-        return View("Index");
+        try
+        {
+            _rfidReaderService.StartListening(portName);
+            ViewBag.Message = "Started listening on port " + portName;
+            return View("Index");
+        } 
+        catch(Exception ex)
+        {
+            ViewBag.Message = ex.StackTrace;
+            return View("Index");
+        }
     }
 
     [HttpPost]

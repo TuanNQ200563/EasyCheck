@@ -1,10 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using EasyCheck.Models;
-using EasyCheck.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EasyCheck.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

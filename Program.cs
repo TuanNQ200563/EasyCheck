@@ -1,10 +1,14 @@
 using System.Data;
 using EasyCheck.Contexts;
-using EasyCheck.Models;
 using EasyCheck.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using MySql.Data.MySqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IRfidReaderService, RfidReaderService>();
 
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
 builder.Services.AddSingleton<AttendanceService>();
@@ -20,8 +24,11 @@ builder.Services.AddSession(options => {
     options.Cookie.IsEssential = true;
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "/login"; });
+
+builder.Services.AddAuthorization();
+
 // Add services to the container.
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -40,6 +47,7 @@ app.UseRouting();
 
 app.UseSession();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

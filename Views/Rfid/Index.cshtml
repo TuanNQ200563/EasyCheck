@@ -2,30 +2,19 @@
     ViewData["Title"] = "RFID Reader";
 }
 
-<h2>RFID Reader</h2>
 
-<form asp-action="StartListening" method="post">
-    <div class="form-group">
-        <label for="portName">Port Name:</label>
-        <input type="text" name="portName" class="form-control" id="portName" />
-    </div>
-    <button type="submit" class="btn btn-primary">Start Listening</button>
-</form>
+<div class="container">
+    <h2>Quản lý thiết bị</h2>
 
-<form asp-action="StopListening" method="post" style="margin-top: 20px;">
-    <button type="submit" class="btn btn-danger">Stop Listening</button>
-</form>
-
-@if (ViewBag.Message != null)
-{
-    <div class="alert alert-info" style="margin-top: 20px;">
-        @ViewBag.Message
-    </div>
-}
-
-@if (ViewBag.ReceivedData != null)
-{
-    <div class="alert alert-success" style="margin-top: 20px;">
-        Received Data: @ViewBag.ReceivedData
-    </div>
-}
+    <form asp-action="StartListening" method="post">
+        <div class="form-group">
+            <label for="portName">Cổng kết nối</label>
+            <input type="text" name="portName" class="form-control" id="portName" value="COM3" />
+        </div>
+        <div class="row">
+            <div class="col-3 mt-3">
+                <button type="submit" class="btn btn-primary">Kết nối</button>
+            </div>
+        </div>
+    </form>
+</div>

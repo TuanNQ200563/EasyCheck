@@ -1,6 +1,7 @@
 using System;
 using System.IO.Ports;
 
+namespace EasyCheck.Services;
 public interface IRfidReaderService
 {
     void StartListening(string portName, int baudRate = 9600);
@@ -44,6 +45,11 @@ public class RfidReaderService : IRfidReaderService, IDisposable
         {
             Console.WriteLine($"Error receiving data: {ex.Message}");
         }
+    }
+
+    private void SendCommand(string command)
+    {
+
     }
 
     public void Dispose()
